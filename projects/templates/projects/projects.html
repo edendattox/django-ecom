@@ -42,11 +42,19 @@
               <div class="card__body">
                 <h3 class="project__title">{{project.title}}</h3>
                 <p>
+                  {% if project.owner.name %}
+                  <a
+                    class="project__author"
+                    href="{% url 'user- profile' project.owner.id %}"
+                    >By {{project.owner.name}}
+                  </a>
+                  {% else %}
                   <a
                     class="project__author"
                     href="{% url 'project' project.id %}"
-                    >By Dennis Ivanov</a
-                  >
+                    >By Dennis Ivanov
+                  </a>
+                  {% endif %}
                 </p>
                 <p class="project--rating">
                   <span style="font-weight: bold">{{project.vote_ratio}}%</span>
